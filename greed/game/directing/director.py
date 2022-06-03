@@ -55,7 +55,19 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        pass
+        banner = cast.get_first_actor("banners")
+        robot = cast.get_first_actor("robots")
+        objects = cast.get_actors("objects")
+
+        max_x = self._video_service.get_width()
+        max_y = self._video_service.get_height()
+        robot.move_next(max_x, max_y)
+        
+        for object in objects:
+            if robot.get_position().equals(object.get_position()):
+                score += object.get_points()
+                cast.remove_actors("objects", object)
+                  
 
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
