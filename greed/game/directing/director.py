@@ -1,3 +1,6 @@
+import random
+
+
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
     Rules listed and your program meets all of the Requirements found on 
@@ -25,6 +28,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._score = 0
 
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -64,9 +68,17 @@ class Director:
         robot.move_next(max_x, max_y)
         
         for object in objects:
+            object.move_next(max_x, max_y)
+            position = object.get_position()
+            y_value = position.get_y()
             if robot.get_position().equals(object.get_position()):
-                score += object.get_points()
-                cast.remove_actors("objects", object)
+                self._score += object.get_points()
+                cast.remove_actor("objects", object)
+                banner.set_text(f"{self._score}")
+            #when object is off screen, remove it
+            elif y_value == max_y:
+                cast.remove_actor("objects", object)
+
                   
 
     def _do_outputs(self, cast):
@@ -77,8 +89,13 @@ class Director:
         """
 
         #Let's try not to touch or add anything here without good reason
+        
 
         self._video_service.clear_buffer()
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
         self._video_service.flush_buffer()
+
+
+    
+        

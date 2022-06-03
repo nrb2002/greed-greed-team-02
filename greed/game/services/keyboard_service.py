@@ -26,6 +26,9 @@ class KeyboardService:
         Returns:
             Point: The selected direction.
         """
+
+        # This game we're only moving left and right so we're going to disable up and down
+
         dx = 0
         dy = 0
 
@@ -35,11 +38,13 @@ class KeyboardService:
         if pyray.is_key_down(pyray.KEY_RIGHT):
             dx = 1
         
+        '''
         if pyray.is_key_down(pyray.KEY_UP):
             dy = -1
         
         if pyray.is_key_down(pyray.KEY_DOWN):
             dy = 1
+        '''
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
