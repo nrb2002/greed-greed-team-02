@@ -4,6 +4,7 @@
     https://byui-cse.github.io/cse210-course-competency/inheritance/materials/greed-specification.html
 """
 
+    #Let's only do things to get_inputs and do_updates if we can help it
 
 class Director:
     """A person who directs the game. 
@@ -60,6 +61,9 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
+
+        #Let's try not to touch or add anything here without good reason
+
         self._video_service.clear_buffer()
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
