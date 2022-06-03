@@ -15,8 +15,7 @@ In game folder,
     Probably in this folder we want to create a rock and a gem class.
     They will inherit from the actor class, and it will probably only want three things:
 
-      First, set the gems to always show * and rocks O.
-      (Actor class has a self._text attribute, use this?)
+      
 
       Second, a single function that when called, will change the player's score by +1 or -1
       (or maybe we'll add that functionality another way somewhere else?)
@@ -34,7 +33,7 @@ In game folder,
 
     In do_updates,
 
-      Do whatever we can think of
+      
 
 
 

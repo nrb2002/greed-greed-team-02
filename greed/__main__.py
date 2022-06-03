@@ -39,6 +39,8 @@ def main():
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)
 
+    score = 0
+
 
     #create the robot, this is copypasta from rfk
     x = int(MAX_X / 2)

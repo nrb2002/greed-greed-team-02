@@ -15,3 +15,6 @@ class Gem(Actor):
         self._text = "*"
         self._points = 1
 
+    def get_points(self):
+        return self._points
+
