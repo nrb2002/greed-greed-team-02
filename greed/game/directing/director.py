@@ -45,7 +45,9 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        pass
+        robot = cast.get_first_actor("robots")
+        velocity = self._keyboard_service.get_direction()
+        robot.set_velocity(velocity)
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.

@@ -42,7 +42,7 @@ def main():
 
     #create the robot, this is copypasta from rfk
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 2) #we will be changing this to the bottom of the screen
+    y = MAX_Y-(CELL_SIZE*2) #we will be changing this to the bottom of the screen
     position = Point(x, y)
 
     robot = Actor()
@@ -58,30 +58,26 @@ def main():
     for n in range(random.randint(3,6)):
 
         #true for rock, false for gem
-        is_rock = random.randbool()
+        is_rock = random.choice([Gem, Rock])
 
         x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 1) #we will be changing this to the top of the screen
+        y = 1 #we will be changing this to the top of the screen
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
+
+        #check for collision with another generated object and make sure there is no conflict
 
         r = random.randint(0, 255)
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         color = Color(r, g, b)
 
-        if is_rock = True:
-            object = Rock()
-        
-        artifact = Artifact()
-        artifact.set_text(text)
-        artifact.set_font_size(FONT_SIZE)
-        artifact.set_color(color)
-        artifact.set_position(position)
-        cast.add_actor("artifacts", artifact)
+        object = is_rock()
 
-
-
+        object.set_font_size(FONT_SIZE)
+        object.set_color(color)
+        object.set_position(position)
+        cast.add_actor("objects", object)
 
 
     # start the game

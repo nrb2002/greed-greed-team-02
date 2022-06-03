@@ -47,4 +47,5 @@ In game folder,
 
 In main,
 
+  Main might be done?
   Figure out what we need to do
