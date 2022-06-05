@@ -55,6 +55,19 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
 
+
+
+
+    # start the game
+    keyboard_service = KeyboardService(CELL_SIZE)
+    video_service = VideoService(
+        CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
+    director = Director(keyboard_service, video_service)
+    director.start_game(cast)
+
+
+def new_object():
+        #this function has to make its way into director somehow.
     for i in range(6):
         #true for rock, false for gem
         is_rock = random.choice([Gem, Rock])
@@ -72,16 +85,6 @@ def main():
         object.set_color(color)
         object.set_position(position)
         cast.add_actor("objects", object)
-
-    # start the game
-    keyboard_service = KeyboardService(CELL_SIZE)
-    video_service = VideoService(
-        CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
-    director = Director(keyboard_service, video_service)
-    director.start_game(cast)
-
-
-
 
 if __name__ == "__main__":
     main()

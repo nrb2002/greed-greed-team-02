@@ -96,6 +96,26 @@ class Director:
         self._video_service.draw_actors(actors)
         self._video_service.flush_buffer()
 
+    def new_object(self, cast):
+        #true for rock, false for gem
+        is_rock = random.choice([Gem, Rock])
 
-    
+        x = random.randint(1, COLS - 1)
+        y = 1 #we will be changing this to the top of the screen
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+
+        #check for collision with another generated object and make sure there is no conflict
+
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = Color(r, g, b)
+
+        object = is_rock()
+
+        object.set_font_size(FONT_SIZE)
+        object.set_color(color)
+        object.set_position(position)
+        cast.add_actor("objects", object)
         
