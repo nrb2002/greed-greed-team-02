@@ -4,6 +4,15 @@ import pyray
 class VideoService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state 
     on the screen. 
+
+    Attributes:
+    - close_window
+    - clear_buffer
+    - draw_actor
+    - draw_actors
+    - flush buffers
+    - get_cell_size
+
     """
 
     def __init__(self, caption, width, height, cell_size, frame_rate, debug = False):
