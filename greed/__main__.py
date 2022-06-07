@@ -35,11 +35,13 @@ def main():
 
     #create the player
     x = int(MAX_X / 2) #middle of screen
-    y = MAX_Y-(CELL_SIZE*2) # bottom of screen
+    y = MAX_Y-100-(CELL_SIZE*2) # bottom of screen
+    # Readjusting bottom Y minus 30 so the player is visible enough
+    
     position = Point(x, y)
 
     player = Actor()
-    player.set_text("#")
+    player.set_text("\n |\ndb\n|  |") # drawing a little spacial vessel
     player.set_font_size(FONT_SIZE)
     player.set_color(WHITE)
     player.set_position(position)

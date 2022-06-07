@@ -1,5 +1,6 @@
 import pyray
 from game.shared.point import Point
+# from greed.__main__ import MAX_Y
 
 
 class KeyboardService:
@@ -38,13 +39,14 @@ class KeyboardService:
         if pyray.is_key_down(pyray.KEY_RIGHT):
             dx = 1
         
-        '''
+        # Enabling the up and down movements
         if pyray.is_key_down(pyray.KEY_UP):
             dy = -1
+
         
         if pyray.is_key_down(pyray.KEY_DOWN):
             dy = 1
-        '''
+        
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
