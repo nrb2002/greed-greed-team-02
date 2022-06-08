@@ -40,10 +40,13 @@ def main():
     
     position = Point(x, y)
 
-    player = Actor()
+    player = Actor() # Create an actor object
+
 
     # drawing a little spacial vessel
-    player.set_text("\n |\ndb\n|  |") 
+    player.set_text("\n |\ndb\n|  |")
+
+     
     
     player.set_font_size(FONT_SIZE)
     player.set_color(WHITE)
