@@ -36,7 +36,7 @@ def main():
     #create the player
     x = int(MAX_X / 2) #middle of screen
     y = MAX_Y-100-(CELL_SIZE*2) # bottom of screen
-    # Readjusting bottom Y minus 100 so the player is visible enough
+    # Readjusting bottom Y minus 30 so the player is visible enough
     
     position = Point(x, y)
 
