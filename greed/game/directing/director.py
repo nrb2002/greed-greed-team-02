@@ -26,11 +26,9 @@ class Director:
         _keyboard_service (KeyboardService): For getting directional input.
         _video_service (VideoService): For providing video output.
         _score (int): The current score of the game
-        _timer
-        _timer_interval
-        _cell_size
-        _cols
-        _font
+        _timer (int): An integer that tracks the number of game loops
+        _timer_interval (int): Sets the number of game loops in between new object spawns
+        _cols (int): The number of columns based on screen and cell size
     """
 
     def __init__(self, keyboard_service, video_service, cell_size, font_size):
@@ -39,6 +37,8 @@ class Director:
         Args:
             keyboard_service (KeyboardService): An instance of KeyboardService.
             video_service (VideoService): An instance of VideoService.
+            cell_size (int): The size on the screen of each actor
+            font (int): The size of lettering on the screen
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
@@ -64,6 +64,7 @@ class Director:
             self._do_outputs(cast)
         self._video_service.close_window()
 
+
     def _get_inputs(self, cast):
         """Gets directional input from the keyboard and applies it to the player.
 
@@ -73,6 +74,7 @@ class Director:
         player = cast.get_first_actor("players")
         velocity = self._keyboard_service.get_direction()
         player.set_velocity(velocity)
+
 
     def _do_updates(self, cast):
         """Updates the player's position and resolves any collisions with artifacts.
@@ -87,7 +89,6 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         player.move_next(max_x, max_y)
-
 
         player_x = player.get_position().get_x()
         player_y = player.get_position().get_y()
@@ -106,13 +107,11 @@ class Director:
             elif player_y == max_y:
                 cast.remove_actor("objects", object)
 
+        #upticks interval and spawns new object every so often
         self._timer += 1
         if self._timer % self._timer_interval == 0:
             self._new_object(cast)
 
-        
-
-                  
 
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
@@ -121,15 +120,18 @@ class Director:
             cast (Cast): The cast of actors.
         """
 
-        #Let's try not to touch or add anything here without good reason
-        
-
         self._video_service.clear_buffer()
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
         self._video_service.flush_buffer()
 
+
     def _new_object(self, cast):
+        """Creates a new rock or gem at the top of the screen.
+
+        Args:
+            cast (Cast): The cast of actors.
+        """
         #true for rock, false for gem
         is_rock = random.choice([Gem, Rock])
 

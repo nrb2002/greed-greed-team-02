@@ -71,7 +71,7 @@ class Actor:
             max_x (int): The maximum x value.
             max_y (int): The maximum y value.
         """
-        x = (self._position.get_x() + self._velocity.get_x()) % max_x
+        x = (self._position.get_x() + self._velocity.get_x()) % max_x #allows screen wrap left to right
         y = (self._position.get_y() + self._velocity.get_y())
         self._position = Point(x, y)
 

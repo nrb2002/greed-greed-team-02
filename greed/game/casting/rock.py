@@ -14,10 +14,14 @@ class Rock(Actor):
         
     """
     def __init__(self):
+        """Constructs a new Rock."""
         super().__init__()
         self._text = "O"
         self._points = -1
         self._velocity = Point(0, 4)
 
     def get_points(self):
+        """Returns:
+            int: the value of the rock in score points
+        """
         return self._points

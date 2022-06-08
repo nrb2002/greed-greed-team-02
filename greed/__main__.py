@@ -28,7 +28,7 @@ def main():
     # create the banner
     banner = Actor()
     banner.set_text("SCORE: ")
-    banner.set_font_size(FONT_SIZE*2)
+    banner.set_font_size(FONT_SIZE*2) #Big score is happy score
     banner.set_color(Color(255, 0, 0))
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)

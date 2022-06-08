@@ -14,10 +14,14 @@ class Gem(Actor):
         
     """
     def __init__(self):
+        """Constructs a new Gem."""
         super().__init__()
         self._text = "*"
         self._points = 1
         self._velocity = Point(0, 4)
 
     def get_points(self):
+        """Returns:
+            int: the value of the gem in score points
+        """
         return self._points
