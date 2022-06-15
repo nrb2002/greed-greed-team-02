@@ -105,7 +105,7 @@ class Director:
                 cast.remove_actor("objects", object)
                 banner.set_text(f"SCORE: {self._score}")
                 
-                # If the score is under 0, print Game over on the screen, before restarting the game
+                # If the score is under 0, print Game over on the screen, before restarting the game automatically
                 if self._score < 0:
                     banner.set_text(f"GAME OVER")
 
