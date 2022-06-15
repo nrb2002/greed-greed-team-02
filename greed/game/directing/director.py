@@ -94,6 +94,7 @@ class Director:
         player_y = player.get_position().get_y()
         
         for object in objects:
+            
             object.move_next(max_x, max_y)
 
             object_x = object.get_position().get_x()
@@ -103,6 +104,11 @@ class Director:
                 self._score += object.get_points()
                 cast.remove_actor("objects", object)
                 banner.set_text(f"SCORE: {self._score}")
+                
+                # If the score is under 0, print Game over on the screen, before restarting the game
+                if self._score < 0:
+                    banner.set_text(f"GAME OVER")
+
             #when object is off screen, remove it
             elif player_y == max_y:
                 cast.remove_actor("objects", object)

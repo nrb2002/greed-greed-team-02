@@ -47,3 +47,4 @@ root                     (project root folder)
 ## Authors
 * George Blanchard
 * Nathan Rolim
+* Baron Tshibasu
